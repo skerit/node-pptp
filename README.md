@@ -51,3 +51,10 @@ PING 1.2.3.4 (1.2.3.4): 56 data bytes
 64 bytes from 1.2.3.4: icmp_seq=1 ttl=64 time=72.612 ms
 64 bytes from 1.2.3.4: icmp_seq=2 ttl=64 time=72.775 ms
 ```
+
+# Notes to make example work
+* When connect to localhost on OS X, the handshake will fail completely, so it's not work for this case.
+As a workaround to this case, you can connect to LAN ip, but still capture the GRE packet via loopback
+device.
+* node-pcap on npm is not capatible with 4.x and later, as a workaround, you can get the project from 
+github directly. `npm i https://github.com/mranney/node_pcap`
