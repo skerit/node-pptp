@@ -75,8 +75,8 @@ GRE.prototype = {
 		for (var ii in ifs) {
 			for (var jj in ifs[ii]) {
 				if (
-					(ifs[ii][jj].address === localAddr && localAddr !== remoteAddr) ||
-					(ifs[ii][jj].internal && localAddr === remoteAddr)
+					(ifs[ii][jj].address === localAddr) ||
+					(ifs[ii][jj].internal)
 				) {
 					// Got device
 					if (this.pcaps[ii]) {
