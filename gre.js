@@ -83,14 +83,14 @@ GRE.prototype = {
 						return;
 					}
 					var cap = this.pcaps[ii] = pcap.createSession(ii, 'ip proto gre');
-					cap.on('packet', function(packet) {
-						switch (packet.pcap_header.link_type) {
+					cap.on('packet', function(raw_packet) {
+						switch (raw_packet.link_type) {
 							case 'LINKTYPE_ETHERNET':
-								return this._ondata.call(this, packet.slice(14));
+								return this._ondata.call(this, raw_packet.buf.slice(14));
 							case 'LINKTYPE_NULL':
-								return this._ondata.call(this, packet.slice(4));
+								return this._ondata.call(this, raw_packet.buf.slice(4));
 							default:
-								console.log('Unknown pcap header', packet.pcap_header.link_type);
+								console.log('Unknown pcap header', raw_packet.link_type);
 						}
 					}.bind(this));
 					return;
