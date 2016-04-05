@@ -101,6 +101,9 @@ GRE.prototype = {
 	},
 
 	open: function(host, peer, callId, peerCallId, session) {
+		// use ipv4 address
+		host = /(\d+.)+\d+/.exec(host)[0];
+		peer = /(\d+.)+\d+/.exec(peer)[0];
 		this.greListen(host, peer);
 		var session = ip2long(peer) * 0x10000 + callId;
 		var call = new GRECall(this, peer, peerCallId, session);
